@@ -1,46 +1,14 @@
-/* Feito para DevUnit.org */
-$(function(){
-	Profile.load();
-});
+window.sr = new scrollReveal(config);
 
-Profile = {
-	load:function(){
-		this.links();
-		this.social();
-		this.accordion();
-	},
-	links:function(){
-		$('a[href="#"]').click(function(e){
-			e.preventDefault();
-		});
-	},
-	social:function(){
-		$('.accordion .about-me .photo .photo-overlay .plus').click(function(){
-			$('.social-link').toggleClass('active');
-			$('.about-me').toggleClass('blur');
-		});
-		$('.social-link').click(function(){
-			$(this).toggleClass('active');
-			$('.about-me').toggleClass('blur');
-		});
-	},
-	accordion:function(){
-		var subMenus = $('.accordion .sub-nav').hide();
-		$('.accordion > a').each(function(){
-			if($(this).hasClass('active')){
-				$(this).next().slideDown(100);
-			}
-		});
-		$('.accordion > a').click(function(){
-			$this = $(this);
-			$target =  $this.next();
-			$this.siblings('a').removeAttr('class');
-			$this.addClass('active');
-			if(!$target.hasClass('active')){
-				subMenus.removeClass('active').slideUp(100);
-				$target.addClass('active').slideDown(100);
-			}
-			return false;
-		});
-	}
+var config = {
+  easing: 'ease',
+  reset: true
 }
+
+(function(d) {
+  var config = {
+    kitId: 'xyl8bgh',
+    scriptTimeout: 3000
+  },
+  h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+})(document);
